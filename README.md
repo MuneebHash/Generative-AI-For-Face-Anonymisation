@@ -1,19 +1,43 @@
-# Generative-AI-For-Face-Anonymisation
-# Introduction
-Generative AI, such as Generative Adversarial Networks (GANs), refers to a technological approach that uses deep learning models to produce content that closely resembles human-generated content, such as images and phrases. This technology can generate responses to diverse and intricate prompts, including different languages, instructions, and inquiries [1]. In recent years, there have been notable breakthroughs in Generative AI. The progress in technology has resulted in significant enhancements in the capabilities of Generative AI, enabling it to generate content of exceptional realism, including artwork and photographs [2]. The images produced by Generative AI rely heavily on extensive datasets comprising human images, which leads to substantial privacy concerns. These privacy risks become even more pronounced when considering the potential outcomes of others exploiting these databases.  
+# Generative AI for Face Anonymization
 
-Therefore, it has become essential to anonymize the datasets in ways that preserve their utility and privacy. We aimed to describe a unique identity disentanglement technique which constitutes an anonymization process achieved by modifying the gender of the input image within the latent space and pixel space. The solutions we offer are part of our framework, which is designed to: identify and manipulate identity-relevant information in a face to produce an anonymized face and maintain nonidentity-related features (such as hair, background, and pose) without compromising the naturalness of the face.  
+## Overview
+This project addresses privacy concerns in AI-generated imagery by **anonymizing human faces** without sacrificing data utility. Using **StyleGAN2** and **Pix2PixHD**, it performs **gender swapping** in both latent and pixel space to generate realistic, high-resolution anonymized images while preserving key attributes (e.g., hair, background, pose).
 
-Our methodology entails the integration of StyleGAN2 and Pix2PixHD, which guarantees the production of authentic content and the effective safeguarding of privacy. The proficiency of StyleGAN2 in generating synthetic data while preserving statistical traits by anonymizing serves as a valuable complement to Pix2PixHD 's capability to proactively translate AI-generated images into high-resolution, realistic representations. The generated output includes both an anonymized image and a numerical score indicating the extent of similarity between the anonymized image and the source image.  
+## Key Features
+- **StyleGAN2 + Pix2PixHD Integration**: Produces authentic facial images with seamless high-resolution transformations.
+- **Gender-Swap Anonymization**: Obscures identity by altering gender-specific traits, retaining nonidentity features.
+- **Cosine Similarity Scoring**: Measures similarity between the original and anonymized image to balance privacy and fidelity.
+- **Easy Colab Deployment**: Jupyter Notebook-based setup with free GPU access—no manual environment configuration required.
 
-To quantify this similarity, we employed the cosine similarity measure, a mathematical method that assesses the resemblance between two vectors based on the cosine of the angle between them [3]. This measure serves as a reliable indicator of the degree of likeness between the anonymized and source images. A higher cosine similarity score signifies a closer match, while a lower score indicates greater dissimilarity. This approach not only provides an anonymized image but also furnishes a quantitative measure, allowing for a nuanced evaluation of the effectiveness of the anonymization process in preserving key features from the source image. It also emphasizes the ethical obligations of transparency and responsible data handling, thereby paving the way for a future where technological advancements and privacy safeguards can coexist harmoniously. 
+## Project Motivation
+As AI gains traction in image generation, **privacy compliance** has become a critical challenge. This project aims to **protect individual identities** while still allowing researchers to leverage large, diverse datasets for model development.
 
-# GitHub Link
-https://github.com/mcs192023/Final_Modal.git
+## Repository Contents
+- **Model/Code**: Core scripts for preprocessing, classification (ResNet18), and the StyleGAN2/Pix2PixHD pipelines.
+- **notebooks/**: Google Colab-ready Jupyter Notebooks for face upload, anonymization, and result analysis.
+- **results/**: Sample outputs, logs, or performance metrics.
+- **docs/** (optional): Additional documentation or user guides.
 
-# End User Guide
-Our generative AI model can be accessed in Google Colab. It is built on Jupyter Notebook platform and provides free access to GPU resources. Without any hassle of setting up the environment, run our model using the following link: 
+## How It Works
+1. **Upload an Image**: Provide a supported image (JPG, PNG, etc.).
+2. **Face Alignment**: Detects and aligns the face automatically.
+3. **Gender Classification**: Uses a ResNet18-based model to classify the image as male or female.
+4. **Gender Swap**: StyleGAN2 and Pix2PixHD generate a high-resolution, anonymized image of the opposite gender.
+5. **Cosine Similarity**: Calculates a similarity score, ensuring privacy with preserved key features.
 
-https://colab.research.google.com/drive/15RFBtXzo-lvKwMCkgh_0ZgeCASOPOgLE?usp=sharing 
+## Getting Started
+1. **Launch in Colab**: [Click here](https://colab.research.google.com/drive/15RFBtXzo-lvKwMCkgh_0ZgeCASOPOgLE?usp=sharing) to open the notebook.
+2. **Run All Cells**: Follow the prompts to upload your image, run anonymization, and view/save results.
+3. **Adjust Parameters**: Customize thresholds or model settings within the notebook for different anonymization levels.
 
-# Refer to the final report pdf for more information 
+## Prerequisites
+- **Google Colab** (recommended)  
+- **Python 3.x** (if running locally)  
+- **Deep Learning Framework** (TensorFlow or PyTorch, depending on your implementation)  
+- **Libraries**: NumPy, scikit-learn, Pillow, Matplotlib, dlib, etc.  
+*(All required libraries are typically pre-installed in Colab.)*
+
+---
+
+**Questions or Contributions?**  
+- Please open an issue or pull request.  
